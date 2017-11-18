@@ -9,10 +9,8 @@
 #include <time.h>
 #include <math.h>
 
-#define N 10000
-#define n 2
-
-//int result[n] = {};
+#define N 1000000
+#define n 1024
 
 
 double f(double x) {
@@ -55,15 +53,16 @@ int main(void) {
 	int shmid;
 	char pathname[] = "easy_to_type";
 	key_t key = ftok(pathname, 0);
-	printf("%d\n", key);
+//	printf("%d\n", key);
 	shmid = shmget(key, n*sizeof(int), 0666|IPC_CREAT|IPC_EXCL);
-	printf("%d\n", shmid);
+//	printf("%d\n", shmid);
 	
 	int * result = (int *)shmat(shmid, NULL, 0);
 	int i;
 	for (i = 0; i < n; i++) {
 		result[i] = 0;
 	}
+	shmdt(result);
 	
 	
 	
