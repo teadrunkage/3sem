@@ -9,12 +9,12 @@
 #include <time.h>
 #include <math.h>
 
-#define N 1000000
-#define n 1024
+#define N 100000000
+//#define n 10
 
 
-int main(void) {
-	
+int main(int argc, char * argv[]) {
+	int n = atoi(argv[1]);
 	int shmid;
 	char pathname[] = "easy_to_type";
 	key_t key = ftok(pathname, 0);
